@@ -124,21 +124,21 @@ Debug View All Locks  | ✅ Done    | feat: add /locks route to get all current 
 
 ## 📂 Folder Structure
 
-project-root/
-├── node_modules/
-├── .env
-├── .gitignore
-├── package.json
-├── package-lock.json
-├── README.md
-├── src/
-│   ├── index.js
-│   ├── config/
-│   ├── controllers/
-│   ├── middlewares/
-│   ├── routes/
-│   ├── seed/
-│   └── utils/
+project-root/  
+├── node_modules/  
+├── .env  
+├── .gitignore  
+├── package.json  
+├── package-lock.json  
+├── README.md  
+├── src/  
+│   ├── index.js  
+│   ├── config/  
+│   ├── controllers/  
+│   ├── middlewares/  
+│   ├── routes/  
+│   ├── seed/  
+│   └── utils/  
 
 ---
 
