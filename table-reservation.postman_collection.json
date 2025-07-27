@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "2677bdb8-ed61-4d17-bd4c-88897aac0581",
+		"name": "assingments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25738809"
+	},
+	"item": [
+		{
+			"name": "Resource Solutions and Yield Analytics",
+			"item": [
+				{
+					"name": "seed data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{localUrl}}/api/seed",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"api",
+								"seed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lockTable",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tableId\":\"table-101\",\r\n    \"userId\": \"user-seed-1\",\r\n    \"duration\": 300\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localUrl}}/api/tables/lock",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"api",
+								"tables",
+								"lock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unlockTable",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tableId\":\"table-101\",\r\n    \"userId\": \"user-seed-1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localUrl}}/api/tables/unlock",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"api",
+								"tables",
+								"unlock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTableStatus",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tableId\":\"table-101\",\r\n    \"userId\": \"user-seed-1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{localUrl}}/api/tables/table-101/status",
+							"host": [
+								"{{localUrl}}"
+							],
+							"path": [
+								"api",
+								"tables",
+								"table-101",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

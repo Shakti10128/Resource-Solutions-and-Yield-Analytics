@@ -142,6 +142,13 @@ project-root/
 
 ---
 
+
+## 🧪 Postman Collection
+
+▶️ [Download Collection](./table-reservation.postman_collection.json)
+
+---
+
 ## 📬 Author
 
 Built by **Shakti Kumar**  
