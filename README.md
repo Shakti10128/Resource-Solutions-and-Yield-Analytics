@@ -124,23 +124,21 @@ Debug View All Locks  | ✅ Done    | feat: add /locks route to get all current 
 
 ## 📂 Folder Structure
 
-project-root/  
-├── index.js  
-├── routes/  
-│   └── tableRoutes.js  
-│   └── seedRoutes.js  
-├── controllers/  
-│   └── tableController.js  
-│   └── seedController.js  
-├── middlewares/  
-│   └── validateLockRequest.js  
-├── utils/  
-│   ├── memoryStore.js  
-│   ├── successResponse.js  
-│   └── errorResponse.js  
-├── seed/  
-│   └── lockSeeder.js  
-├── README.md  
+project-root/
+├── node_modules/
+├── .env
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── README.md
+├── src/
+│   ├── index.js
+│   ├── config/
+│   ├── controllers/
+│   ├── middlewares/
+│   ├── routes/
+│   ├── seed/
+│   └── utils/
 
 ---
 
