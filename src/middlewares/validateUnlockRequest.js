@@ -1,9 +1,9 @@
 const { StatusCodes } = require('http-status-codes');
 const {errorResponse} = require('../utils/errorResponse');
 
-const validateLockRequest = (req, res, next) => {
-    // require fields to lock the table
-    const { tableId, userId, duration } = req.body;
+const validateUnlockRequest = (req, res, next) => {
+    // require fields to unlock the table
+    const { tableId, userId } = req.body;
 
     // if the tableId is missing or it's not string
     if (!tableId || typeof tableId !== 'string') {
@@ -15,19 +15,9 @@ const validateLockRequest = (req, res, next) => {
         return errorResponse(res, StatusCodes.BAD_REQUEST, 'Invalid or missing userId');
     }
 
-    // if the dureation is not provided and the type is not number and it should be positive
-    if (
-        duration === undefined ||
-        typeof duration !== 'number' ||
-        duration <= 0
-    ) {
-        return errorResponse(res, StatusCodes.BAD_REQUEST, 'Invalid or missing duration');
-    }
-
-    // Passed all checks
     next(); // calling the next middleware if there is any
 };
 
 module.exports = {
-    validateLockRequest
+    validateUnlockRequest
 };

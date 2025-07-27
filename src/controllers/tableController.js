@@ -19,11 +19,50 @@ const lockTable = async(req,res)=>{
         return successResponse(res,StatusCodes.OK,`Table locked successfully.`);
 
     } catch (error) {
-        console.log("Error while locking the table");
-        throw error;
+        return errorResponse(res,StatusCodes.INTERNAL_SERVER_ERROR,"Something went wrong while locking the table.");
+    }
+}
+
+const unlockTable = async(req,res)=>{
+    try {
+        const {tableId,userId} = req.body;
+        // Check if the table is even locked
+        if (!tableLocks[tableId]) {
+            return errorResponse(res, StatusCodes.NOT_FOUND, "Table is not locked.");
+        }
+
+        // Check if the lock belongs to the same user
+        if (tableLocks[tableId].userId !== userId) {
+            return errorResponse(res, StatusCodes.FORBIDDEN, "You are not allowed to unlock this table.");
+        }
+        
+        // if the req user has accuire the table relase it
+        delete tableLocks[tableId];
+        return successResponse(res,StatusCodes.OK,null,"Table unlocked successfully");
+    } catch (error) {
+        return errorResponse(res,StatusCodes.INTERNAL_SERVER_ERROR,"Something went wrong while unlocking the table.");
+    }
+}
+
+const getTableStatus = async(req,res)=>{
+    try {
+        const {tableId} = req.params; // getting tableId from the params
+        let isLocked = false;
+        // if the table is locked and the time not expire
+        if(tableLocks[tableId] && tableLocks[tableId].expiryTime > Date.now()) {
+            isLocked = true;
+        }
+
+        return res.status(StatusCodes.OK).json({
+            isLocked
+        })
+    } catch (error) {
+        return errorResponse(res,StatusCodes.INTERNAL_SERVER_ERROR,"Something went wrong while checking table status.");
     }
 }
 
 module.exports = {
-    lockTable
+    lockTable,
+    unlockTable,
+    getTableStatus
 }
